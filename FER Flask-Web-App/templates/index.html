@@ -1,0 +1,61 @@
+<html>
+<head>
+<title>Python Flask Upload and Display Image</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</head>
+<body style="background-image: url('http://images.freecreatives.com/wp-content/uploads/2016/02/White-Glitter-Wallpaper-.jpg');">
+
+<!--Another background i think might be good: https://upload.wikimedia.org/wikipedia/commons/2/2b/Background_wallpaper_maple_leaves.jpg-->
+
+<center><img src="https://media-exp1.licdn.com/dms/image/C4D0BAQGRQqSW5YBPsA/company-logo_200_200/0/1595951547546?e=2159024400&v=beta&t=HtIe7Y4QApG8PEu0lCnpHctoU9C3FL71fF6L9bEZOIE" alt="CTP Logo" style="width:100px;"></center>
+
+	<h1 align="center">⭐ Welcome! ⭐</h1>
+	<h2 align="center">This is the Facial Expression Classifier</h2>
+	<h4 align="center">Created by: People Intepreters 🖊️</h4>
+	
+	<p align="center"><b>This tool was built using the Real-world Affective Faces (RAF) Dataset to classify an image as either:</b></p>
+	<p align="center">Happy 😊 or 😥 Sad</p>
+
+	<div class="container">
+		<div class="row">
+			<center><h2>Please upload your image here:</h2></center>
+			<center><p>
+				{% with messages = get_flashed_messages() %}
+					{% if messages %}
+						<ul>
+							{% for message in messages %}
+								<li>{{ message }}</li>
+							{% endfor %}
+						</ul>
+					{% endif %}
+				{% endwith %}
+			</p></center>
+			{% if filename %}
+			<center><div style="padding:20px;">
+				<img src="{{ url_for('display_image', filename=filename) }}"> <!--the line that displays the image-->
+			</div></center>
+			{% endif %}
+			<form method="post" action="/" enctype="multipart/form-data">
+				<dl>
+					<p>
+						<input type="file" name="file" class="form-control" autocomplete="off" required>
+					</p>
+				</dl>
+				<center><p>
+					<input type="submit" value="Submit" class="btn btn-info">
+				</p></center>
+		</div>
+	</div>
+</body>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+
+</body>
+</html>
