@@ -4,22 +4,29 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 </head>
-<body style="background-image: url('http://images.freecreatives.com/wp-content/uploads/2016/02/White-Glitter-Wallpaper-.jpg');">
+<body style="background-image: url('https://c2.staticflickr.com/2/1516/24642416444_9d9aa11a8a_b.jpg'); background-repeat: no-repeat; background-size: cover; color: silver;"> <!--turns all the text inside body to silver-->
+
+<!--The Starry background: http://images.freecreatives.com/wp-content/uploads/2016/02/White-Glitter-Wallpaper-.jpg-->
 
 <!--Another background i think might be good: https://upload.wikimedia.org/wikipedia/commons/2/2b/Background_wallpaper_maple_leaves.jpg-->
 
-<center><img src="https://media-exp1.licdn.com/dms/image/C4D0BAQGRQqSW5YBPsA/company-logo_200_200/0/1595951547546?e=2159024400&v=beta&t=HtIe7Y4QApG8PEu0lCnpHctoU9C3FL71fF6L9bEZOIE" alt="CTP Logo" style="width:100px;"></center>
+<!--<center><img src="https://media-exp1.licdn.com/dms/image/C4D0BAQGRQqSW5YBPsA/company-logo_200_200/0/1595951547546?e=2159024400&v=beta&t=HtIe7Y4QApG8PEu0lCnpHctoU9C3FL71fF6L9bEZOIE" alt="CTP Logo" style="width:100px;"></center>-->
 
-	<h1 align="center">⭐ Welcome! ⭐</h1>
-	<h2 align="center">This is the Facial Expression Classifier</h2>
-	<h4 align="center">Created by: People Intepreters 🖊️</h4>
+	<h1 align="center";>⭐ Welcome! ⭐</h1>
+	<h2 align="center";>This is the Facial Expression Classifier</h2>
+	<h4 align="center";>Created by: People Intepreters 🖊️</h4>
 	
-	<p align="center"><b>This tool was built using the Real-world Affective Faces (RAF) Dataset to classify an image as either:</b></p>
-	<p align="center">Happy 😊 or 😥 Sad</p>
+	<p align="center";><b>This tool was built using the Real-world Affective Faces (RAF) Dataset to classify an image of a facial expression as showing either Happiness or Sadness.</b></p>
+
+	<!--<p align="center">Happy 😊 or 😥 Sad</p>-->
+	
+	<center><img src="https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX39285391.jpg" alt="masks" style="width:75px;"></center>
+	<!--masks with red bg, but logo text: https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX39285391.jpg-->
+	<!--masks with white background: https://i7.pngguru.com/preview/614/634/372/theatre-mask-drama-stock-photography-actor.jpg-->
 
 	<div class="container">
 		<div class="row">
-			<center><h2>Please upload your image here:</h2></center>
+			<center><h2>Please upload your a picture of your face here:</h2></center>
 			<center><p>
 				{% with messages = get_flashed_messages() %}
 					{% if messages %}
@@ -31,11 +38,22 @@
 					{% endif %}
 				{% endwith %}
 			</p></center>
-			{% if filename %}
+			{% if filename %} <!--if filename exists-->
 			<center><div style="padding:20px;">
 				<img src="{{ url_for('display_image', filename=filename) }}"> <!--the line that displays the image-->
 			</div></center>
 			{% endif %}
+
+			{% if prediction %}
+			<center><p style="font-size: 30px;">Prediction: {{prediction}}</p></center>
+			{% endif %}
+			{% if percent_happy %} 
+			<center><p style="font-size: 15px;">Percent happy: {{ percent_happy }}</p></center>
+			{% endif %}
+			{% if percent_sad %}
+			<center><p style="font-size: 15px;">Percent sad: {{ percent_sad }}</p></center>
+			{% endif %}
+
 			<form method="post" action="/" enctype="multipart/form-data">
 				<dl>
 					<p>
@@ -45,8 +63,15 @@
 				<center><p>
 					<input type="submit" value="Submit" class="btn btn-info">
 				</p></center>
+			</form>
+
 		</div>
 	</div>
+
+	<footer>
+		<p align="center">This project was programmed using Python, Flask, and Logistic Regression Image Classification.</p>
+	</footer>
+	
 </body>
 <!DOCTYPE html>
 <html>
