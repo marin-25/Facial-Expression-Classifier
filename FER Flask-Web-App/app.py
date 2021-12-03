@@ -36,7 +36,15 @@ def upload_image():
 		file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename)) # save it in the static/uploads/ folder
 		#print('upload_image filename: ' + filename)
 		flash('Image was successfully uploaded')
-		return render_template('index.html', filename=filename) # if everything goes well, the code should run till here for this function
+		
+		# mayb we can put the classification here? to get the prediction... but it would make the code harder to read
+		prediction = 11111
+		percent_happy = 22222
+		percent_sad= 33333
+		
+		return render_template('index.html', filename=filename, 
+			prediction=prediction, percent_happy=percent_happy, percent_sad=percent_sad) 
+		# if everything goes well, the code should run till here for this function
 	else:
 		flash('The allowed image types are: png, jpg, jpeg, gif')
 		return redirect(request.url)
