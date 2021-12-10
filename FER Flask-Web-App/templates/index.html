@@ -1,8 +1,8 @@
 <html>
 <head>
-<title>Python Flask Upload and Display Image</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<title>Python Flask Upload and Display Image</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 </head>
 <body style="background-image: url('https://c2.staticflickr.com/2/1516/24642416444_9d9aa11a8a_b.jpg'); background-repeat: no-repeat; background-size: cover; color: silver;"> <!--turns all the text inside body to silver-->
 
@@ -37,10 +37,10 @@
 						</ul>
 					{% endif %}
 				{% endwith %}
-			</p></center>
+			</p></center>			
 			{% if filename %} <!--if filename exists-->
 			<center><div style="padding:20px;">
-				<img src="{{ url_for('display_image', filename=filename) }}"> <!--the line that displays the image-->
+				<img src="{{ url_for('display_image', filename=filename) }}"> <!--the line that displays the image-->	
 			</div></center>
 			{% endif %}
 
@@ -48,10 +48,10 @@
 			<center><p style="font-size: 30px;">Prediction: {{prediction}}</p></center>
 			{% endif %}
 			{% if percent_happy %} 
-			<center><p style="font-size: 15px;">Percent happy: {{ percent_happy }}</p></center>
+			<center><p style="font-size: 15px;">Percent happy: {{ percent_happy }}%</p></center>
 			{% endif %}
 			{% if percent_sad %}
-			<center><p style="font-size: 15px;">Percent sad: {{ percent_sad }}</p></center>
+			<center><p style="font-size: 15px;">Percent sad: {{ percent_sad }}%</p></center>
 			{% endif %}
 
 			<form method="post" action="/" enctype="multipart/form-data">
@@ -67,6 +67,10 @@
 
 		</div>
 	</div>
+
+	<center><p>
+		<a href="{{ url_for('input_URL') }}" class="btn btn-secondary my-4">Upload Image by URL page</a>
+	</p></center>
 
 	<style>
 		.footer {

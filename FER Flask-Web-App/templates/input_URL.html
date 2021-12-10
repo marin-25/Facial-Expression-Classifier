@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!--<meta charset="utf-8">-->
+	<title>Python Flask Upload and Display Strings</title>
+</head>
+<body style="background-image: url('https://c2.staticflickr.com/2/1516/24642416444_9d9aa11a8a_b.jpg'); background-repeat: no-repeat; background-size: cover; color: silver;">
+	
+	<h2 align="center";>This is the Facial Expression Classifier</h2>
+	<h4 align="center";>Created by: People Interpreters 🖊️</h4>
+
+	<p align="center";><b>This tool was built using the Real-world Affective Faces (RAF) Dataset to classify an image of a facial expression as showing either Happiness or Sadness.</b></p>
+	<p align="center";><b>On this page, you can have your picture classified by uploading an URL.</b></p>
+
+	<center><img src="https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX39285391.jpg" alt="masks" style="width:75px;"></center>
+
+	<form action="{{ url_for('input_URL')}}", method="POST">
+		<fieldset>
+			<legend>Please input an URL here:</legend>
+			<input name="inputted_variable" type="text" required>
+			<br>
+			<br>
+			<input type="submit">
+		</fieldset>
+
+<div class="container">
+	<div class="row">
+		{% if inputted_URL %}
+		<center><p> The uploaded URL was: {{ inputted_URL}} </p></center>
+		{% endif %}
+		{% if prediction %}
+		<center><p style="font-size: 30px;">Prediction: {{ prediction }} </p></center>
+		{% endif %}
+		{% if percent_happy %}
+		<center><p style="font-size: 15px;">Percent happy: {{ percent_happy }}</p></center>
+		{% endif %}
+		{% if percent_sad %}
+		<center><p style="font-size: 15px;">Percent sad: {{ percent_sad }} </p></center>
+		{% endif %}
+	</div>
+</div>
+
+	<style>
+		.footer {
+			position: fixed;
+			left: 0;
+			right: 0;
+			width: 100%;
+			background-color: gold;
+			color: white;
+			text-align: center;
+		}
+	</style>
+
+	<footer class="footer">
+		<p align="center">This project was programmed using Python, Flask, and Logistic Regression Image Classification.</p>
+	</footer>
+
+</body>
+</html>
